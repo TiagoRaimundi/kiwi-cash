@@ -19,7 +19,6 @@ export default function Header({ onRegisterClick }: HeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Prevent body scroll when sidebar is open
   useEffect(() => {
     if (sidebarOpen) {
       document.body.style.overflow = "hidden";
@@ -41,21 +40,19 @@ export default function Header({ onRegisterClick }: HeaderProps) {
     <>
       <header
         style={{
-          background: scrolled
-            ? "rgba(255, 255, 255, 0.95)"
-            : "linear-gradient(135deg, #10b981 0%, #059669 100%)",
-          color: scrolled ? "#1f2937" : "white",
-          padding: scrolled ? "0.8rem 0" : "1rem 0",
+          background: "rgba(255, 255, 255, 0.95)", // SEMPRE BRANCO
+          color: "#1f2937",
+          padding: "0.5rem 0",
           position: "fixed",
           width: "100%",
           top: 0,
           zIndex: 1000,
           boxShadow: scrolled
             ? "0 4px 24px rgba(0, 0, 0, 0.08)"
-            : "0 2px 20px rgba(16, 185, 129, 0.3)",
+            : "0 2px 12px rgba(0, 0, 0, 0.05)",
           backdropFilter: "blur(20px)",
           transition: "all 0.3s ease",
-          borderBottom: scrolled ? "1px solid #e5e7eb" : "none",
+          borderBottom: "1px solid #e5e7eb",
         }}
       >
         <nav
@@ -66,73 +63,33 @@ export default function Header({ onRegisterClick }: HeaderProps) {
             justifyContent: "space-between",
             alignItems: "center",
             padding: "0 1rem",
+            height: "70px",
           }}
         >
-          {/* Logo */}
+          {/* Logo PNG - BEM MAIOR */}
           <Link
             href="/"
             style={{
               display: "flex",
               alignItems: "center",
-              gap: "0.6rem",
               textDecoration: "none",
               transition: "all 0.3s",
               zIndex: 1001,
+              height: "100%",
             }}
           >
-            <div
+            <img
+              src="/assets/logo.png"
+              alt="Kiwi Cash"
               style={{
-                background: scrolled
-                  ? "linear-gradient(135deg, #10b981 0%, #059669 100%)"
-                  : "rgba(255,255,255,0.2)",
-                padding: "0.5rem",
-                borderRadius: "12px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                boxShadow: scrolled
-                  ? "0 4px 12px rgba(16, 185, 129, 0.2)"
-                  : "0 2px 8px rgba(0,0,0,0.1)",
-                border: scrolled ? "none" : "2px solid rgba(255,255,255,0.3)",
-                transition: "all 0.3s",
+                height: "150px",
+                width: "auto",
+                transition: "all 0.3s ease",
+                filter: "drop-shadow(0 2px 8px rgba(16, 185, 129, 0.2))",
+                marginTop: "-15px",
+                marginBottom: "-15px",
               }}
-            >
-              <span
-                style={{
-                  fontSize: "1.5rem",
-                  filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))",
-                }}
-              >
-                🥝
-              </span>
-            </div>
-
-            <div>
-              <span
-                style={{
-                  fontSize: "clamp(1.3rem, 4vw, 1.6rem)",
-                  fontWeight: 800,
-                  letterSpacing: "0.5px",
-                  color: scrolled ? "#1f2937" : "white",
-                  transition: "all 0.3s",
-                }}
-              >
-                Kiwi
-              </span>
-              <div
-                style={{
-                  fontSize: "0.6rem",
-                  fontWeight: 600,
-                  letterSpacing: "1px",
-                  color: scrolled ? "#10b981" : "rgba(255,255,255,0.8)",
-                  marginTop: "-2px",
-                  textTransform: "uppercase",
-                  display: "block",
-                }}
-              >
-                Cash
-              </div>
-            </div>
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -149,7 +106,7 @@ export default function Header({ onRegisterClick }: HeaderProps) {
                 key={item.href}
                 href={item.href}
                 style={{
-                  color: scrolled ? "#4b5563" : "white",
+                  color: "#4b5563",
                   fontWeight: 600,
                   fontSize: "0.95rem",
                   padding: "0.6rem 1.2rem",
@@ -159,14 +116,12 @@ export default function Header({ onRegisterClick }: HeaderProps) {
                   whiteSpace: "nowrap",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = scrolled
-                    ? "rgba(16, 185, 129, 0.1)"
-                    : "rgba(255,255,255,0.15)";
-                  e.currentTarget.style.color = scrolled ? "#10b981" : "white";
+                  e.currentTarget.style.background = "rgba(16, 185, 129, 0.1)";
+                  e.currentTarget.style.color = "#10b981";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = "transparent";
-                  e.currentTarget.style.color = scrolled ? "#4b5563" : "white";
+                  e.currentTarget.style.color = "#4b5563";
                 }}
               >
                 {item.label}
@@ -177,9 +132,7 @@ export default function Header({ onRegisterClick }: HeaderProps) {
               style={{
                 width: "1px",
                 height: "24px",
-                background: scrolled
-                  ? "rgba(0,0,0,0.1)"
-                  : "rgba(255,255,255,0.3)",
+                background: "rgba(0,0,0,0.1)",
                 margin: "0 0.5rem",
               }}
             />
@@ -187,17 +140,13 @@ export default function Header({ onRegisterClick }: HeaderProps) {
             <Link
               href="/loja/dashboard"
               style={{
-                background: scrolled
-                  ? "linear-gradient(135deg, #10b981 0%, #059669 100%)"
-                  : "white",
-                color: scrolled ? "white" : "#059669",
+                background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+                color: "white",
                 padding: "0.75rem 1.8rem",
                 borderRadius: "50px",
                 fontWeight: 700,
                 fontSize: "0.95rem",
-                boxShadow: scrolled
-                  ? "0 4px 16px rgba(16, 185, 129, 0.3)"
-                  : "0 4px 16px rgba(0,0,0,0.15)",
+                boxShadow: "0 4px 16px rgba(16, 185, 129, 0.3)",
                 transition: "all 0.3s",
                 textDecoration: "none",
                 display: "inline-block",
@@ -205,15 +154,13 @@ export default function Header({ onRegisterClick }: HeaderProps) {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = "translateY(-2px)";
-                e.currentTarget.style.boxShadow = scrolled
-                  ? "0 8px 24px rgba(16, 185, 129, 0.4)"
-                  : "0 8px 24px rgba(0,0,0,0.2)";
+                e.currentTarget.style.boxShadow =
+                  "0 8px 24px rgba(16, 185, 129, 0.4)";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = scrolled
-                  ? "0 4px 16px rgba(16, 185, 129, 0.3)"
-                  : "0 4px 16px rgba(0,0,0,0.15)";
+                e.currentTarget.style.boxShadow =
+                  "0 4px 16px rgba(16, 185, 129, 0.3)";
               }}
             >
               Entrar
@@ -225,9 +172,7 @@ export default function Header({ onRegisterClick }: HeaderProps) {
             onClick={() => setSidebarOpen(!sidebarOpen)}
             style={{
               display: "none",
-              background: scrolled
-                ? "rgba(16, 185, 129, 0.1)"
-                : "rgba(255,255,255,0.2)",
+              background: "rgba(16, 185, 129, 0.1)",
               border: "none",
               cursor: "pointer",
               padding: "0.7rem",
@@ -242,7 +187,7 @@ export default function Header({ onRegisterClick }: HeaderProps) {
               style={{
                 width: "24px",
                 height: "2px",
-                background: scrolled ? "#10b981" : "white",
+                background: "#10b981",
                 borderRadius: "2px",
                 transition: "all 0.3s",
                 transform: sidebarOpen
@@ -254,7 +199,7 @@ export default function Header({ onRegisterClick }: HeaderProps) {
               style={{
                 width: "24px",
                 height: "2px",
-                background: scrolled ? "#10b981" : "white",
+                background: "#10b981",
                 borderRadius: "2px",
                 margin: "6px 0",
                 transition: "all 0.3s",
@@ -265,7 +210,7 @@ export default function Header({ onRegisterClick }: HeaderProps) {
               style={{
                 width: "24px",
                 height: "2px",
-                background: scrolled ? "#10b981" : "white",
+                background: "#10b981",
                 borderRadius: "2px",
                 transition: "all 0.3s",
                 transform: sidebarOpen
@@ -275,21 +220,6 @@ export default function Header({ onRegisterClick }: HeaderProps) {
             />
           </button>
         </nav>
-
-        {!scrolled && (
-          <div
-            style={{
-              position: "absolute",
-              bottom: 0,
-              left: 0,
-              right: 0,
-              height: "2px",
-              background:
-                "linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent)",
-              opacity: 0.5,
-            }}
-          />
-        )}
       </header>
 
       {/* Overlay */}
@@ -367,46 +297,18 @@ export default function Header({ onRegisterClick }: HeaderProps) {
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: "0.75rem",
-                marginBottom: "0.5rem",
+                marginBottom: "0.75rem",
               }}
             >
-              <div
+              <img
+                src="/assets/logo.png"
+                alt="Kiwi Cash"
                 style={{
-                  background: "rgba(255,255,255,0.2)",
-                  padding: "0.6rem",
-                  borderRadius: "12px",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  border: "2px solid rgba(255,255,255,0.3)",
+                  height: "80px",
+                  width: "auto",
+                  filter: "drop-shadow(0 4px 12px rgba(0,0,0,0.2))",
                 }}
-              >
-                <span style={{ fontSize: "1.8rem" }}>🥝</span>
-              </div>
-              <div>
-                <div
-                  style={{
-                    fontSize: "1.8rem",
-                    fontWeight: 800,
-                    color: "white",
-                    lineHeight: 1,
-                  }}
-                >
-                  Kiwi
-                </div>
-                <div
-                  style={{
-                    fontSize: "0.7rem",
-                    fontWeight: 600,
-                    letterSpacing: "1.5px",
-                    color: "rgba(255,255,255,0.8)",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  Cash
-                </div>
-              </div>
+              />
             </div>
             <p
               style={{
@@ -460,7 +362,8 @@ export default function Header({ onRegisterClick }: HeaderProps) {
         <div
           style={{
             height: "1px",
-            background: "linear-gradient(90deg, transparent, #e5e7eb, transparent)",
+            background:
+              "linear-gradient(90deg, transparent, #e5e7eb, transparent)",
             margin: "0 1.5rem",
           }}
         />
@@ -487,11 +390,13 @@ export default function Header({ onRegisterClick }: HeaderProps) {
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = "translateY(-2px)";
-              e.currentTarget.style.boxShadow = "0 12px 28px rgba(16, 185, 129, 0.4)";
+              e.currentTarget.style.boxShadow =
+                "0 12px 28px rgba(16, 185, 129, 0.4)";
             }}
             onMouseLeave={(e) => {
               e.currentTarget.style.transform = "translateY(0)";
-              e.currentTarget.style.boxShadow = "0 8px 20px rgba(16, 185, 129, 0.3)";
+              e.currentTarget.style.boxShadow =
+                "0 8px 20px rgba(16, 185, 129, 0.3)";
             }}
           >
             <span style={{ fontSize: "1.25rem" }}>🚀</span>
