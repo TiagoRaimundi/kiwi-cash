@@ -36,13 +36,145 @@ export default function Segments() {
       id="segmentos"
       style={{
         padding: "5rem 1rem",
-        background: "linear-gradient(to bottom, #f9fafb, #ffffff)",
+        background: "#f9fafb",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
+      {/* Background Pattern - Textura de Grid MAIS VISÍVEL */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: `
+            linear-gradient(to right, rgba(16, 185, 129, 0.12) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(16, 185, 129, 0.12) 1px, transparent 1px)
+          `,
+          backgroundSize: "40px 40px",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+
+      {/* Linhas diagonais adicionais para mais textura */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: `
+            repeating-linear-gradient(
+              45deg,
+              transparent,
+              transparent 80px,
+              rgba(16, 185, 129, 0.04) 80px,
+              rgba(16, 185, 129, 0.04) 81px
+            )
+          `,
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+
+      {/* Floating shapes decorativos */}
+      <div
+        style={{
+          position: "absolute",
+          top: "10%",
+          right: "5%",
+          width: "300px",
+          height: "300px",
+          background: "radial-gradient(circle, rgba(16, 185, 129, 0.1) 0%, transparent 70%)",
+          borderRadius: "50%",
+          pointerEvents: "none",
+          zIndex: 0,
+          filter: "blur(40px)",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          bottom: "15%",
+          left: "8%",
+          width: "250px",
+          height: "250px",
+          background: "radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%)",
+          borderRadius: "50%",
+          pointerEvents: "none",
+          zIndex: 0,
+          filter: "blur(40px)",
+        }}
+      />
+
+      {/* Dots pattern accent - MAIS VISÍVEL */}
+      <div
+        style={{
+          position: "absolute",
+          top: "20%",
+          left: "3%",
+          width: "120px",
+          height: "120px",
+          backgroundImage: "radial-gradient(circle, rgba(16, 185, 129, 0.25) 2px, transparent 2px)",
+          backgroundSize: "20px 20px",
+          pointerEvents: "none",
+          zIndex: 0,
+          opacity: 0.6,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          bottom: "25%",
+          right: "8%",
+          width: "100px",
+          height: "100px",
+          backgroundImage: "radial-gradient(circle, rgba(16, 185, 129, 0.25) 2px, transparent 2px)",
+          backgroundSize: "20px 20px",
+          pointerEvents: "none",
+          zIndex: 0,
+          opacity: 0.6,
+        }}
+      />
+
+      {/* Círculos concêntricos decorativos */}
+      <div
+        style={{
+          position: "absolute",
+          top: "50%",
+          right: "15%",
+          width: "150px",
+          height: "150px",
+          borderRadius: "50%",
+          border: "2px solid rgba(16, 185, 129, 0.1)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          top: "calc(50% + 15px)",
+          right: "calc(15% + 15px)",
+          width: "120px",
+          height: "120px",
+          borderRadius: "50%",
+          border: "2px solid rgba(16, 185, 129, 0.08)",
+          pointerEvents: "none",
+          zIndex: 0,
+        }}
+      />
+
       <div
         style={{
           maxWidth: "1200px",
           margin: "0 auto",
+          position: "relative",
+          zIndex: 1,
         }}
       >
         {/* Header */}
@@ -53,14 +185,16 @@ export default function Segments() {
             viewport={{ once: true }}
             style={{
               display: "inline-block",
-              background: "#10b981",
+              background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
               color: "white",
-              padding: "0.5rem 1rem",
+              padding: "0.65rem 1.5rem",
               borderRadius: "50px",
               fontSize: "0.875rem",
               fontWeight: 700,
-              marginBottom: "1rem",
+              marginBottom: "1.5rem",
               letterSpacing: "1px",
+              textTransform: "uppercase",
+              boxShadow: "0 4px 12px rgba(16, 185, 129, 0.25)",
             }}
           >
             PARA TODOS
@@ -72,14 +206,25 @@ export default function Segments() {
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             style={{
-              fontSize: "clamp(2rem, 5vw, 3rem)",
+              fontSize: "clamp(2.25rem, 5vw, 3rem)",
               fontWeight: 800,
-              marginBottom: "1rem",
+              marginBottom: "1.25rem",
               color: "#111827",
               lineHeight: 1.2,
             }}
           >
-            Para Qualquer Tipo de Negócio
+            Para{" "}
+            <span
+              style={{
+                background: "linear-gradient(135deg, #10b981 0%, #059669 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              Qualquer Tipo
+            </span>{" "}
+            de Negócio
           </motion.h2>
 
           <motion.p
@@ -88,11 +233,11 @@ export default function Segments() {
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             style={{
-              fontSize: "clamp(1rem, 2vw, 1.125rem)",
+              fontSize: "clamp(1.05rem, 2vw, 1.15rem)",
               color: "#6b7280",
               maxWidth: "42rem",
               margin: "0 auto",
-              lineHeight: 1.6,
+              lineHeight: 1.7,
             }}
           >
             Independente do seu segmento, o Kiwi se adapta ao seu negócio. Com
@@ -126,36 +271,36 @@ export default function Segments() {
                     position: "relative",
                     background: "white",
                     border: "2px solid #e5e7eb",
-                    borderRadius: "1rem",
+                    borderRadius: "20px",
                     padding: "2rem",
                     textAlign: "center",
                     transition: "all 0.3s ease",
-                    boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.06)",
                     overflow: "hidden",
                     cursor: "pointer",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.borderColor = "#10b981";
                     e.currentTarget.style.boxShadow =
-                      "0 10px 25px rgba(16, 185, 129, 0.15)";
+                      "0 12px 30px rgba(16, 185, 129, 0.2)";
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.borderColor = "#e5e7eb";
-                    e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.1)";
+                    e.currentTarget.style.boxShadow = "0 4px 12px rgba(0,0,0,0.06)";
                   }}
                 >
                   {/* Gradient accent */}
                   <div
                     style={{
                       position: "absolute",
-                      top: 0,
-                      right: 0,
-                      width: "8rem",
-                      height: "8rem",
-                      background: "rgba(16, 185, 129, 0.05)",
+                      top: "-50%",
+                      right: "-30%",
+                      width: "200px",
+                      height: "200px",
+                      background: "radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, transparent 70%)",
                       borderRadius: "50%",
-                      filter: "blur(40px)",
                       pointerEvents: "none",
+                      filter: "blur(30px)",
                     }}
                   />
 
@@ -166,7 +311,7 @@ export default function Segments() {
                       top: 0,
                       left: 0,
                       right: 0,
-                      height: "2px",
+                      height: "3px",
                       background:
                         "linear-gradient(to right, transparent, #10b981, transparent)",
                       opacity: 0,
@@ -203,7 +348,7 @@ export default function Segments() {
 
                   <p
                     style={{
-                      fontSize: "0.875rem",
+                      fontSize: "0.95rem",
                       color: "#6b7280",
                       lineHeight: 1.6,
                       position: "relative",
@@ -256,19 +401,19 @@ export default function Segments() {
                 display: "flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
                 fontSize: "0.95rem",
               }}
               onMouseEnter={(e) => {
                 if (currentPage !== 1) {
                   e.currentTarget.style.borderColor = "#10b981";
                   e.currentTarget.style.boxShadow =
-                    "0 4px 12px rgba(0,0,0,0.15)";
+                    "0 6px 16px rgba(16, 185, 129, 0.2)";
                 }
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = "#e5e7eb";
-                e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.1)";
+                e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.08)";
               }}
             >
               <span style={{ fontSize: "1.125rem" }}>←</span>
@@ -290,7 +435,9 @@ export default function Segments() {
                       borderRadius: "50%",
                       fontWeight: 700,
                       background:
-                        currentPage === page ? "#10b981" : "white",
+                        currentPage === page
+                          ? "linear-gradient(135deg, #10b981 0%, #059669 100%)"
+                          : "white",
                       color: currentPage === page ? "white" : "#111827",
                       border:
                         currentPage === page
@@ -300,8 +447,8 @@ export default function Segments() {
                       transition: "all 0.3s ease",
                       boxShadow:
                         currentPage === page
-                          ? "0 8px 16px rgba(16, 185, 129, 0.3)"
-                          : "0 1px 3px rgba(0,0,0,0.1)",
+                          ? "0 8px 20px rgba(16, 185, 129, 0.35)"
+                          : "0 2px 8px rgba(0,0,0,0.08)",
                       transform: currentPage === page ? "scale(1.1)" : "scale(1)",
                       fontSize: "0.95rem",
                     }}
@@ -309,14 +456,14 @@ export default function Segments() {
                       if (currentPage !== page) {
                         e.currentTarget.style.borderColor = "#10b981";
                         e.currentTarget.style.boxShadow =
-                          "0 4px 12px rgba(0,0,0,0.15)";
+                          "0 6px 16px rgba(16, 185, 129, 0.2)";
                       }
                     }}
                     onMouseLeave={(e) => {
                       if (currentPage !== page) {
                         e.currentTarget.style.borderColor = "#e5e7eb";
                         e.currentTarget.style.boxShadow =
-                          "0 1px 3px rgba(0,0,0,0.1)";
+                          "0 2px 8px rgba(0,0,0,0.08)";
                       }
                     }}
                   >
@@ -345,19 +492,19 @@ export default function Segments() {
                 display: "flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
+                boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
                 fontSize: "0.95rem",
               }}
               onMouseEnter={(e) => {
                 if (currentPage !== totalPages) {
                   e.currentTarget.style.borderColor = "#10b981";
                   e.currentTarget.style.boxShadow =
-                    "0 4px 12px rgba(0,0,0,0.15)";
+                    "0 6px 16px rgba(16, 185, 129, 0.2)";
                 }
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = "#e5e7eb";
-                e.currentTarget.style.boxShadow = "0 1px 3px rgba(0,0,0,0.1)";
+                e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.08)";
               }}
             >
               <span>Próxima</span>
